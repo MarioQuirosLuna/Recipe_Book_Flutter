@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_book_flutter/config/theme/app_theme.dart';
+import 'package:recipe_book_flutter/presentation/provider/recipe_book_provider.dart';
 import 'package:recipe_book_flutter/presentation/screens/home/home_screen.dart';
 
 void main() {
@@ -10,6 +11,9 @@ void main() {
             ChangeNotifierProvider(
                 create: (_) => ThemeProvider()..loadSettings()
             ),
+            ChangeNotifierProvider(
+                create: (_) => RecipeBookProvider()
+            )
           ],
           child: const MyApp(),
       )
