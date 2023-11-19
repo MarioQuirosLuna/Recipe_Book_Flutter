@@ -5,6 +5,7 @@ import 'package:recipe_book_flutter/presentation/provider/recipe_book_provider.d
 import '../../../config/theme/app_theme.dart';
 import '../../widgets/home/CategoriesList.dart';
 import '../../widgets/home/search_recipe.dart';
+import '../../widgets/home/today_picks.dart';
 import '../settings/settings.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +21,7 @@ class HomeScreenState extends State<HomeScreen> {
     //TODO: Load the recipes from the API
     _loadSettings();
     _loadCategories();
+    _loadTodayPicks();
     print("HomeScreen initState");
   }
   _loadSettings() async {
@@ -29,6 +31,10 @@ class HomeScreenState extends State<HomeScreen> {
   _loadCategories() async {
     final recipeBookProvider = context.read<RecipeBookProvider>();
     await recipeBookProvider.loadCategories();
+  }
+  _loadTodayPicks() async {
+    final recipeBookProvider = context.read<RecipeBookProvider>();
+    await recipeBookProvider.loadTodayPicks();
   }
 
   @override
@@ -42,6 +48,7 @@ class HomeScreenState extends State<HomeScreen> {
             children: [
               const SearchRecipe(),
               CategoriesList(recipeProvider: recipeProvider),
+              TodayPicks(recipeProvider: recipeProvider),
             ],
           ),
         ),
@@ -67,4 +74,6 @@ class HomeScreenState extends State<HomeScreen> {
       );
   }
 }
+
+
 
