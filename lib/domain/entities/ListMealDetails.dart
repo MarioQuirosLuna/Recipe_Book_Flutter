@@ -2,18 +2,18 @@
 import 'dart:convert';
 import 'MealDetails.dart';
 
-Meals mealsFromJson(String str) => Meals.fromJson(json.decode(str));
+ListMealDetails mealsFromJson(String str) => ListMealDetails.fromJson(json.decode(str));
 
-String mealsToJson(Meals data) => json.encode(data.toJson());
+String mealsToJson(ListMealDetails data) => json.encode(data.toJson());
 
-class Meals {
+class ListMealDetails {
   final List<MealDetail> meals;
 
-  Meals({
+  ListMealDetails({
     required this.meals
   });
 
-  factory Meals.fromJson(Map<String, dynamic> json) => Meals (
+  factory ListMealDetails.fromJson(Map<String, dynamic> json) => ListMealDetails (
     meals: List<MealDetail>.from(json["meals"].map((x) => MealDetail.fromJson(x))),
   );
 

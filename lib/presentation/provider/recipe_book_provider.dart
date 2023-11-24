@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:recipe_book_flutter/domain/entities/Categories.dart';
-import 'package:recipe_book_flutter/domain/entities/Meals.dart';
+import 'package:recipe_book_flutter/domain/entities/ListMealDetails.dart';
+import 'package:recipe_book_flutter/domain/entities/MealByCategory.dart';
 
 import '../../data/Recipes_Http_Service.dart';
 
 class RecipeBookProvider extends ChangeNotifier {
   Categories? _categories;
-  Meals? _todayPicks;
+  ListMealDetails? _todayPicks;
+  MealsByCategory? _mealsByCategory;
+
   Categories? get categories => _categories;
-  Meals? get todayPicks => _todayPicks;
+  ListMealDetails? get todayPicks => _todayPicks;
+  MealsByCategory? get mealsByCategory => _mealsByCategory;
 
   final _recipesHttpService = RecipesHttpService();
 
@@ -18,17 +22,24 @@ class RecipeBookProvider extends ChangeNotifier {
   }
 
   Future<void> loadTodayPicks() async {
-    var one = await _recipesHttpService.getTodayPicks();
-    var two = await _recipesHttpService.getTodayPicks();
-    var three = await _recipesHttpService.getTodayPicks();
-    _todayPicks = Meals(
+    var futures = <Future<ListMealDetails>>[
+      _recipesHttpService.getTodayPicks(),
+      _recipesHttpService.getTodayPicks(),
+      _recipesHttpService.getTodayPicks(),
+    ];
+    var results = await Future.wait(futures);
+    _todayPicks = ListMealDetails(
       meals: [
-        one.meals[0],
-        two.meals[0],
-        three.meals[0],
+        results[0].meals[0],
+        results[1].meals[0],
+        results[2].meals[0],
       ]
     );
     notifyListeners();
   }
 
+  Future<void> loadMealsByCategory(String categoryName) async {
+    _mealsByCategory = await _recipesHttpService.filterMealsByCategory(categoryName);
+    notifyListeners();
+  }
 }
