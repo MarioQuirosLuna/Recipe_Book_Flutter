@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_book_flutter/domain/entities/MealDetails.dart';
+import 'package:recipe_book_flutter/domain/entities/MealDetail.dart';
 
 import '../../provider/recipe_book_provider.dart';
 

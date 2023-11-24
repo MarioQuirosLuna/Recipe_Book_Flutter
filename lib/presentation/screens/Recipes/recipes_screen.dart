@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_book_flutter/presentation/screens/DetailMeal/details_screen.dart';
 
 import '../../../domain/entities/Category.dart';
 import '../../provider/recipe_book_provider.dart';
@@ -44,48 +45,55 @@ class RecipesState extends State<Recipes> {
             if(snapshot.connectionState == ConnectionState.waiting){
               return const CircularProgressIndicator();
             }else{
-              return Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  children: [
-                    for (var meal in recipeProvider.mealsByCategory!.meals)
-                      Card(
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/recipe_details', arguments: meal);
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Expanded(
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
-                                  child: Image.network(
-                                    meal.strMealThumb,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  meal.strMeal,
-                                  style: const TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-              );
+              return buildGrid(recipeProvider, context);
             }
           }
         ),
+      ),
+    );
+  }
+
+  Expanded buildGrid(RecipeBookProvider recipeProvider, BuildContext context) {
+    return Expanded(
+      child: GridView.count(
+        crossAxisCount: 2,
+        children: [
+          for (var meal in recipeProvider.mealsByCategory!.meals)
+            Card(
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Details(idMeal: meal.idMeal))
+                  );
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(4.0)),
+                        child: Image.network(
+                          meal.strMealThumb,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        meal.strMeal,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
