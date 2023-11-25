@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_book_flutter/presentation/screens/DetailMeal/details_screen.dart';
 
 import '../../../domain/entities/Category.dart';
 import '../../provider/recipe_book_provider.dart';
 import '../../widgets/shared/app_bar_settings.dart';
+import '../MealDetail/details_screen.dart';
 
 class Recipes extends StatefulWidget{
   const Recipes({

@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'Ingredient.dart';
 import 'MealDetail.dart';
 
 ListMealDetails mealsFromJson(String str) => ListMealDetails.fromJson(json.decode(str));

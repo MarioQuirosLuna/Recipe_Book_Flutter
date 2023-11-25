@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'Ingredient.dart';
+
 MealDetails mealDetailsFromJson(String str) => MealDetails.fromJson(json.decode(str));
 
 String mealDetailsToJson(MealDetails data) => json.encode(data.toJson());

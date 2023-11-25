@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/recipe_book_provider.dart';
+import '../../widgets/MealDetails/_ingredients_for_meal_view.dart';
+import '../../widgets/MealDetails/_tab_bar_for_meal_details.dart';
 import '../../widgets/shared/app_bar_settings.dart';
 
 class Details extends StatefulWidget {
@@ -112,31 +114,21 @@ class _Information extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const DefaultTabController(
+          DefaultTabController(
               length: 4,
               child: Column(
                 children: [
-                  SizedBox(height: 20,),
-                  TabBar(
-                    labelColor: Colors.black,
-                    unselectedLabelColor: Colors.grey,
-                    indicatorColor: Colors.black,
-                    tabs: [
-                      Tab(text: "Details",),
-                      Tab(text: "Ingredients",),
-                      Tab(text: "Instructions",),
-                      Tab(text: "Video",),
-                    ],
-                  ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
+                  const TabBarForMealDetails(),
+                  const SizedBox(height: 20,),
                   SizedBox(
-                    height: 200,
+                    height: 450,
                     child: TabBarView(
                       children: [
-                        Text("Details"),
-                        Text("Ingredients"),
-                        Text("Instructions"),
-                        Text("Video"),
+                        const Text("Details"),
+                        IngredientForMealView(recipeProvider: recipeProvider),
+                        const Text("Instructions"),
+                        const Text("Video"),
                       ],
                     ),
                   ),
@@ -148,3 +140,5 @@ class _Information extends StatelessWidget {
     );
   }
 }
+
+

@@ -52,4 +52,15 @@ class RecipesHttpService {
       throw Exception('Failed to load meal details');
     }
   }
+
+  Future<String> getIngredientImageSmall(String ingredientName) async {
+    var uri = Uri.parse('https://www.themealdb.com/images/ingredients/$ingredientName-small.png');
+    var response = await http.get(uri);
+
+    if(response.statusCode == 200) {
+      return uri.toString();
+    } else {
+      throw Exception('Failed to load ingredient image');
+    }
+  }
 }
