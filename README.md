@@ -11,9 +11,21 @@
 
 ## ✨ Demo.
 
-|Home1|Home2|FilterByCategoryBeef|FilterByCategoryDessert|
-|--|--|--|--|
-|![Demo1](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/Home1.png?raw=true)|![Demo2](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/Home_2.png?raw=true)|![Demo3](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/FilterByCategory1.png?raw=true)|![Demo4](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/FilterByCategory2.png?raw=true)|
+|Home1|Home2|
+|--|--|
+|![Demo1](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/Home1.png?raw=true)|![Demo2](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/Home2.png?raw=true)|
+
+|FilterByCategoryBeef|FilterByCategoryDessert|
+|--|--|
+|![Demo3](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/ByCategory1.png?raw=true)|![Demo4](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/ByCategory2.png?raw=true)|
+
+|RecipeDetails Ingredients|
+|--|
+|![Demo6](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/DetailsIngredients.png?raw=true)|
+
+|Settings|Settings DarkMode|
+|--|--|
+|![Demo4](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/Settings1.png?raw=true)|![Demo5](https://github.com/MarioQuirosLuna/Recipe_Book_Flutter/blob/master/lib/assets/Demo/Settings2.png?raw=true)|
 
 ## 💻 About the project.
 
